@@ -9,7 +9,7 @@ import country_converter as coco
 def unpack_files():
     print(os.getcwd())
     global path
-    path = f"{os.getcwd()}\ourventure-flask\DataPreperation\AI_Data"
+    path = f"{os.getcwd()}\ourventure-backend\DataPreperation\AI_Data"
     
     for i in os.listdir(path):
         if i.endswith(".zip"):
@@ -18,7 +18,7 @@ def unpack_files():
                 zip.extractall(f"{path}")
 
 def get_wiki_data():
-    latin_path = f"{os.getcwd()}/ourventure-flask/DataPreperation/DataCollections/name_collection_latin.json"
+    latin_path = f"{os.getcwd()}/ourventure-backend/DataPreperation/DataCollections/name_collection_latin.json"
     if os.path.exists(latin_path):
         print("Names exists")
         with open(latin_path, "r", encoding="utf-8") as json_file:

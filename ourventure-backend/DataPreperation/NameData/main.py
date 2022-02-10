@@ -264,8 +264,8 @@ if __name__ == '__main__':
     # Reads wikipedia into json or df object
     start = time.time()
     new_source_data_needed = True
-    JSON_PATH = "ourventure-flask/DataPreperation/DataCollections/name_collection_output.json"
-    CONVERSION_PATH = "ourventure-flask/DataPreperation/DataCollections/name_collection_latin.json"
+    JSON_PATH = "ourventure-backend/DataPreperation/DataCollections/name_collection_output.json"
+    CONVERSION_PATH = "ourventure-backend/DataPreperation/DataCollections/name_collection_latin.json"
     #Remove me if you want to change the data aggregation system
     # print(JSON_PATH)
     if os.path.exists(JSON_PATH) and not new_source_data_needed:
@@ -276,7 +276,7 @@ if __name__ == '__main__':
         latinized_values = transliterate_values(output_values)
         if not os.path.exists(CONVERSION_PATH):
             print("Creating name_collection_latin in DataCollections")
-            with open("ourventure-flask/DataPreperation/DataCollections/name_collection_latin.json", "w", encoding="utf-8") as fi:
+            with open("ourventure-backend/DataPreperation/DataCollections/name_collection_latin.json", "w", encoding="utf-8") as fi:
                 json.dump(latinized_values, fi, sort_keys=True, ensure_ascii=False)
         print(latinized_values.keys())
         print(latinized_values["arabic"])
@@ -366,17 +366,17 @@ if __name__ == '__main__':
         # TODO: add way to bin targets, aka when value is origin = basque, then region should be iberia, or origin = algeria, region is north africa, some of these can be shared
         # pprint(output_values["spanish"])
         # Write to first json file using output
-        
-        with open("ourventure-flask/DataPreperation/DataCollections/name_collection_output.json", "w", encoding="utf-8") as f:
+        name_path = "ourventure-backend/DataPreperation/DataCollections/name_collection_output"
+        with open(JSON_PATH, "w", encoding="utf-8") as f:
             json.dump(output_values, f, sort_keys=True, ensure_ascii=False)
         # Now compress the file
-        if os.path.exists("ourventure-flask/DataPreperation/DataCollections/name_collection_output.json"):
-            with zipfile.ZipFile("ourventure-flask/DataPreperation/DataCollections/name_collection_output.zip", "w",  zipfile.ZIP_DEFLATED) as zip:
-                zip.write("ourventure-flask/DataPreperation/DataCollections/name_collection_output.json", "name_collection_output.json")
+        if os.path.exists(JSON_PATH):
+            with zipfile.ZipFile(f"{name_path}.zip", "w",  zipfile.ZIP_DEFLATED) as zip:
+                zip.write(JSON_PATH, "name_collection_output.json")
         
         latinized_values = transliterate_values(output_values)
         print("Creating name_collection_latin in DataCollections")
-        latin_path = "ourventure-flask/DataPreperation/DataCollections/name_collection_latin"
+        latin_path = "ourventure-backend/DataPreperation/DataCollections/name_collection_latin"
         with open(f"{latin_path}.json", "w", encoding="utf-8") as fi:
             json.dump(latinized_values, fi, sort_keys=True, ensure_ascii=False)
 
