@@ -2,7 +2,6 @@ import json
 import os
 from traceback import print_list
 import zipfile
-import country_converter as coco
 
 
 #TODO: Automate the removal of certain patterns for any future data
