@@ -241,16 +241,9 @@ def recursive_search(gender_arg, name_data, val, origin, next_link):
                 assign_names(gender_arg, name_data, origin, new_page, last_url)
                     
 
-def add_region_bins(input_dict):
-    print()
-    #Okay so first we need to find the keys we have 
-    print(input_dict.keys())
-    # ini = input()
-
-
 def assign_names(gender_arg, name_data, origin, section, assigned_from):
     names = section.find_all("li")
-    scandinavia = ["faroese", "danish", "greenlandic", "swedish", "norweigan", "icelandic"]
+    scandinavia = ["faroese", "greenlandic", "icelandic"]
     for name in names:
                 #print()
         if origin in scandinavia:
@@ -264,8 +257,8 @@ if __name__ == '__main__':
     # Reads wikipedia into json or df object
     start = time.time()
     new_source_data_needed = True
-    JSON_PATH = "ourventure-backend/DataPreperation/DataCollections/name_collection_output.json"
-    CONVERSION_PATH = "ourventure-backend/DataPreperation/DataCollections/name_collection_latin.json"
+    JSON_PATH = f"{os.getcwd()}/DataPreperation/DataCollections/name_collection_output.json"
+    CONVERSION_PATH = f"{os.getcwd()}/DataPreperation/DataCollections/name_collection_latin.json"
     #Remove me if you want to change the data aggregation system
     # print(JSON_PATH)
     if os.path.exists(JSON_PATH) and not new_source_data_needed:
@@ -276,7 +269,7 @@ if __name__ == '__main__':
         latinized_values = transliterate_values(output_values)
         if not os.path.exists(CONVERSION_PATH):
             print("Creating name_collection_latin in DataCollections")
-            with open("ourventure-backend/DataPreperation/DataCollections/name_collection_latin.json", "w", encoding="utf-8") as fi:
+            with open(JSON_PATH, "w", encoding="utf-8") as fi:
                 json.dump(latinized_values, fi, sort_keys=True, ensure_ascii=False)
         print(latinized_values.keys())
         print(latinized_values["arabic"])
@@ -366,7 +359,7 @@ if __name__ == '__main__':
         # TODO: add way to bin targets, aka when value is origin = basque, then region should be iberia, or origin = algeria, region is north africa, some of these can be shared
         # pprint(output_values["spanish"])
         # Write to first json file using output
-        name_path = "ourventure-backend/DataPreperation/DataCollections/name_collection_output"
+        name_path = f"{os.getcwd()}/DataPreperation/DataCollections/name_collection_output"
         with open(JSON_PATH, "w", encoding="utf-8") as f:
             json.dump(output_values, f, sort_keys=True, ensure_ascii=False)
         # Now compress the file
@@ -376,7 +369,7 @@ if __name__ == '__main__':
         
         latinized_values = transliterate_values(output_values)
         print("Creating name_collection_latin in DataCollections")
-        latin_path = "ourventure-backend/DataPreperation/DataCollections/name_collection_latin"
+        latin_path = f"{os.getcwd()}/DataPreperation/DataCollections/name_collection_latin"
         with open(f"{latin_path}.json", "w", encoding="utf-8") as fi:
             json.dump(latinized_values, fi, sort_keys=True, ensure_ascii=False)
 
