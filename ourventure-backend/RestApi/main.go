@@ -9,7 +9,11 @@ func main() {
 	fmt.Println("Hello, world.")
 	pc := OurVentureClass.Player{
 		FirstName: "Johnny",
+		Name: "X",
+		Class: "Y",
+		Alignment: "Z",
+		Diplomatic: false,
 	}
 	
-	pc.ShowPlayerName()
+	pc.ShowPlayerDetails()
 }
