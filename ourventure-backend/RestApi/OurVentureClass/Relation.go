@@ -61,3 +61,11 @@ func BetweenRange (argMin float64, argMax float64, comparisonArg float64) bool {
 	}
 
 }
+
+func (rel Relation) GetRelationsList () []RelationType{
+	return rel.RelationsList
+}
+
+func (rel *Relation) SetRelationsList(newList []RelationType){
+	rel.RelationsList = newList
+}
