@@ -1,12 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"OurVenture/RestApi/OurVentureClass"
+	"fmt"
 )
 
 func main() {
-	fmt.Println("Hello, world.")
+	var number int
+	fmt.Println("Starting service, Please write the number of players: ")
+	numInput, _ := fmt.Scanf("%d", &number)
+	
+	fmt.Println("Number of players is ", numInput)
+	
 	pc := OurVentureClass.Player{
 		FirstName: "Johnny",
 		Name: "X",
