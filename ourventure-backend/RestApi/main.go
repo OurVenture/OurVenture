@@ -6,12 +6,15 @@ import (
 )
 
 func main() {
-	var number int
+	var numInput int
 	fmt.Println("Starting service, Please write the number of players: ")
-	numInput, _ := fmt.Scanf("%d", &number)
+	_, err := fmt.Scanf("%d", &numInput)
 	
-	fmt.Println("Number of players is ", numInput)
+	fmt.Println("Number of players is ", numInput, err)
 	
+	for i := 1; i <= numInput; i++ {
+		fmt.Println(i)
+	}
 	pc := OurVentureClass.Player{
 		FirstName: "Johnny",
 		Name: "X",
@@ -32,6 +35,7 @@ func main() {
 					RelationTypeValue: 0.7,
 					RelationTypeName: OurVentureClass.GetRelationshipValue(0.7),
 				},
+
 			},
 		},
 	}
