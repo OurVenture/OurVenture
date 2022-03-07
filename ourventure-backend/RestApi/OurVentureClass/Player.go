@@ -25,3 +25,8 @@ func NewPlayer(FirstName string, Name string, Class string, Alignment string, Di
 func (pc Player) ShowPlayerDetails() {
 	fmt.Printf("%+v\n", pc)
 }
+
+func (pc *Player) GetPlayerArguments () string {
+	var x string
+	return x
+}

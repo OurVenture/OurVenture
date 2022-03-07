@@ -2,6 +2,7 @@ package main
 
 import (
 	"OurVenture/RestApi/OurVentureClass"
+	"github.com/gin-gonic/gin"
 	"fmt"
 )
 
@@ -14,6 +15,9 @@ func main() {
 	
 	for i := 1; i <= numInput; i++ {
 		fmt.Println(i)
+		fmt.Println("Please add information about your players!")
+		playerName, charName, chosenClass, chosenAlignment, isDiplomatic := GetPlayerArguments()
+		fmt.Println(playerName, charName, chosenAlignment, chosenClass, isDiplomatic)
 	}
 	pc := OurVentureClass.Player{
 		FirstName: "Johnny",
@@ -42,4 +46,7 @@ func main() {
 	
 	pc.ShowPlayerDetails()
 	// print(pc.Relation.RelationsList[2])
+	// Putting this here to suppress go errors
+	r := gin.Default()
+	print("We like ", r)
 }
