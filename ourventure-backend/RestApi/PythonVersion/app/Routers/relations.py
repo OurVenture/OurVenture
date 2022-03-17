@@ -16,3 +16,10 @@ async def get_overview():
 async def get_relation_connection(person1: str = "bill", person2: str = "ben"):
     x, y = person1, person2
     print(f"Showing relations between: {x} and {y}")
+    # TODO: refactor into JSON message for future frontend
+
+@router.get("/{relation_links}")
+async def get_relation_details():
+    # Collect all relations as dict, with key (value in question) showing subdict containing username and values towards all others units
+    print("Getting relational list, showing overall relations")
+    # TODO: refactor into JSON message for future frontend
