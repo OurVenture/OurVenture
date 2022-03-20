@@ -41,3 +41,12 @@ class Relation:
             return "Terrible"
         elif -6.0 <= self.relation_value < -4.5:
             return "Hatred"
+
+    def get_trend(historic_data) -> string:
+        # Assuming that the file has been opened and a dict value has been passed with the historic data
+        if type(historic_data) is dict:
+            print(historic_data.keys())
+            top_values = sorted(historic_data.items(), reverse=True)
+            print(top_values.keys())
+            top_values = list(top_values.keys())
+            print(top_values[0], top_values[1])
