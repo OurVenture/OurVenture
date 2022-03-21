@@ -48,5 +48,26 @@ class Relation:
             print(historic_data.keys())
             top_values = sorted(historic_data.items(), reverse=True)
             print(top_values.keys())
-            top_values = list(top_values.keys())
-            print(top_values[0], top_values[1])
+            index_vals = list(top_values.keys())
+            print(index_vals[0], index_vals[1])
+            most_recent, last_historic_value = top_values[index_vals[0]], top_values[index_vals[1]]
+            # This is a dummy value, so make sure to check K, V issues
+            if last_historic_value["relational_value"] < most_recent["relational_value"]:
+                return "Degrading"
+            elif last_historic_value["relational_value"] > most_recent["relational_value"]:
+                return "Improving"
+            elif last_historic_value["relational_value"] == most_recent["relational_value"]:
+                return "Static"
+
+    def calculate_effects(self) -> list:
+        print("Gathering list of boons and banes!")
+        # This is a test function, the others too but more so this one
+        if 1.5 <= self.relation_value < 3.2:
+            basic_boons = {}
+        elif 3.2 <= self.relation_value < 6:
+            advanced_boons = {}
+        elif -3 <= self.relation_value < -1 :
+            basic_banes = {}
+        elif -6 <= self.relation_value < -3:
+            advanced_banes = {"action": "This NPC has tactifully sent assassins after the group/player", "action" : "This NPC has reduced the quest reward provided by an associate",
+            "action": "This NPC has hired a thief to steal values from the group", "passive": "Due to NPCs connections, there is no way for the players to buy potions"}
