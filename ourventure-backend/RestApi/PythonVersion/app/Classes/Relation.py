@@ -63,11 +63,14 @@ class Relation:
         print("Gathering list of boons and banes!")
         # This is a test function, the others too but more so this one
         if 1.5 <= self.relation_value < 3.2:
-            basic_boons = {}
+            basic_boons = {"economic_1": "The NPC decided to gift you a 5% discount for your next purchase in this town", "economic_2": "Resupplying (new ammo or food) will cost 50% of the market cost, magic ammo or potions also recieve 10% price reduction",
+            "economic_3": "transportation costs are covered by the NPC, limited to 100 gold", "action_1": "The NPC hired a bodyguard for you, for travelling around the town for the next 3 days", "action_2": "The NPC has called in a priest to heal you for free"}
         elif 3.2 <= self.relation_value < 6:
-            advanced_boons = {}
+            advanced_boons = {"economic_1" : "The NPC decided to gift you a 15% discount for your next purchase in this town", "economic_2": "Resupplying (new ammo, transport, food or potions) will cost 10% of the market cost, magic ammo or potions also costs 10% of the items initial cost",
+            "economic_3": "expensive transportation is covered by the NPC, limited to 500 gold", "action_1": "The NPC hired a bodyguard for your travels in this town and onward to your next destination", "action_2": "The NPC has called in a priest to heal you or resurect an ally, valid for the week"}
         elif -3 <= self.relation_value < -1 :
-            basic_banes = {}
+            basic_banes = {"action_1": "This NPC has sent a gang to slow down the team", "action_2": "Your relationship with other NPCs has been reduced slightly (unless they hate the NPC in question)",
+            "action_3": "This NPC has hired a thief to plant evidence on you", "passive_1": "Due to NPC connections, prices in this town have went up by 10%"}
         elif -6 <= self.relation_value < -3:
-            advanced_banes = {"action": "This NPC has tactifully sent assassins after the group/player", "action" : "This NPC has reduced the quest reward provided by an associate",
-            "action": "This NPC has hired a thief to steal values from the group", "passive": "Due to NPCs connections, there is no way for the players to buy potions"}
+            advanced_banes = {"action_1": "This NPC has tactifully sent assassins after the group/player", "action_2" : "This NPC has reduced the quest reward provided by an associate",
+            "action_3": "This NPC has hired a thief to steal values from the group", "passive_1": "Due to NPCs connections, there is no way for the players to buy potions"}
