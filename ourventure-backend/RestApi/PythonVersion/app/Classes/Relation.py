@@ -68,6 +68,9 @@ class Relation:
         elif 3.2 <= self.relation_value < 6:
             advanced_boons = {"economic_1" : "The NPC decided to gift you a 15% discount for your next purchase in this town", "economic_2": "Resupplying (new ammo, transport, food or potions) will cost 10% of the market cost, magic ammo or potions also costs 10% of the items initial cost",
             "economic_3": "expensive transportation is covered by the NPC, limited to 500 gold", "action_1": "The NPC hired a bodyguard for your travels in this town and onward to your next destination", "action_2": "The NPC has called in a priest to heal you or resurect an ally, valid for the week"}
+        elif -1 <= self.relation_value < 1.5:
+            neutral_boons = {}
+        
         elif -3 <= self.relation_value < -1 :
             basic_banes = {"action_1": "This NPC has sent a gang to slow down the team", "action_2": "Your relationship with other NPCs has been reduced slightly (unless they hate the NPC in question)",
             "action_3": "This NPC has hired a thief to plant evidence on you", "passive_1": "Due to NPC connections, prices in this town have went up by 10%"}
