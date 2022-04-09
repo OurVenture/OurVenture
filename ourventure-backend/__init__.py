@@ -1,13 +1,13 @@
-from flask import Flask
+from fastapi import FastAPI
 from Generation import Person
 
 
 #The __init__ function acts as an interface for the API 
 #All non interface files should be imported and presented via __init__
 #Flask does not need to create pages, only API end points to interact with the VUE frontend
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route("/region", methods=["GET", "POST"])
+@app.get("/region")
 def initialise_region():
     print("Creating region")
     #To create a region, x many classes should be declared
@@ -16,13 +16,13 @@ def initialise_region():
     return "Got Region"
 
 
-@app.route("/person")
+@app.get("/person")
 def get_person():
     print("")
     return "Got Person"
 
 
-@app.route("/")
+@app.get("/")
 def hello_world():
     return "Hello, World!"
 
