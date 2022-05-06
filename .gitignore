@@ -14,3 +14,5 @@ ourventure-backend/DataPreperation/DataCollections/*.txt
 ourventure-backend/DataPreperation/AI_Data/*.csv
 requests_cache.sqlite
 **/requests_cache.sqlite
+#Electron-builder output
+/dist_electron

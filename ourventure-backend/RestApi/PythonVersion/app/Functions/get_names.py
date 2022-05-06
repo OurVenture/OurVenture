@@ -14,7 +14,7 @@ def collect_json_info():
     target_path = [x for x in files_paths if re.search(target_file, x)]
     # print("Target path is ", target_path)
     with open(f"{os.getcwd()}/ourventure-backend/DataPreperation/DataCollections/name_collection_output.json", "r", encoding='utf8') as json_data:
-        # print(json_data)
+        # print("Json data is " , json.load(json_data))
         return json.load(json_data)
 
 def get_user_preference(json_output):
@@ -38,20 +38,36 @@ def get_user_preference(json_output):
 
 def get_values(argument, values):
     print("Select values")
+    
     for i in values:
         print("Oh boi!")
-        print(i)
+        # print(i)
     #do_enum()
 
 def do_enum(argument_list):
     for number, argument in enumerate(argument_list, start=1):
         print(number, " ", argument)
 
+def get_regions(argument_dict):
+    print("Getting K, V variables")
+    reg_list = []
+    for k, v in argument_dict.items():
+        for i in v:
+            # print(i)
+            reg_finding = i["region"]
+            reg_list.append(list(set(reg_finding)))
+
+    print(set(reg_list))
+
 
 if "__main__" == __name__:
     print("Starting up name selection")
     print(os.getcwd())
+    # raw_json = 
     json_output = collect_json_info()
+    # print("Json output is", json_output)
+    print("Key output is ", json_output.keys())
+    individual_regions = get_regions(json_output)
     # print(json_output)
     print(len(json_output), type(json_output))
     get_user_preference(json_output)
