@@ -38,11 +38,11 @@ def get_user_preference(json_output):
 
 def get_values(argument, values):
     print("Select values")
-    
-    for i in values:
-        print("Oh boi!")
-        # print(i)
-    #do_enum()
+    if argument == "origin":
+        do_enum(values)
+    elif argument == "region":
+        #TODO: set the regions for argument values
+        regional_values = get_regions(values)
 
 def do_enum(argument_list):
     for number, argument in enumerate(argument_list, start=1):
@@ -50,14 +50,20 @@ def do_enum(argument_list):
 
 def get_regions(argument_dict):
     print("Getting K, V variables")
-    reg_list = []
+    reg_list = set()
     for k, v in argument_dict.items():
+        # print("Printing V once!", v)
         for i in v:
             # print(i)
             reg_finding = i["region"]
-            reg_list.append(list(set(reg_finding)))
-
-    print(set(reg_list))
+            #print("Places!", [str(place) for place in reg_finding])
+            for place in reg_finding:
+                reg_list.add(place)
+            # print(reg_list)
+    #print(type(reg_list))
+    print(sorted(reg_list))
+    #print(sorted(list(set(reg_list))))
+    return reg_list
 
 
 if "__main__" == __name__:
